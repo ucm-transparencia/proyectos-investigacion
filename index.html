@@ -28,9 +28,19 @@ a{color:inherit;text-decoration:underline;text-decoration-color:transparent;text
 a:hover{text-decoration-color:currentColor}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
 
-/* HERO WRAPPER */
-.hero-wrap{background:var(--gris-c);padding:20px 20px 0}
-@media(max-width:600px){.hero-wrap{padding:14px 12px 0}}
+/* WRAPPER COMÚN — centra todo el contenido con el mismo ancho y margen */
+.hero-wrap,
+.page{
+  max-width:calc(var(--max) + 40px);
+  margin:0 auto;
+  padding-left:20px;
+  padding-right:20px;
+}
+.hero-wrap{background:var(--gris-c);padding-top:20px;padding-bottom:0}
+@media(max-width:600px){
+  .hero-wrap{padding:14px 12px 0}
+  .page{padding-left:12px;padding-right:12px}
+}
 
 /* HERO — sin border-radius abajo para que fluya con el contenido */
 .hero{
@@ -40,8 +50,6 @@ a:hover{text-decoration-color:currentColor}
   position:relative;
   overflow:hidden;
   border-radius:12px 12px 0 0;
-  max-width:var(--max);
-  margin:0 auto;
 }
 .hero::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");pointer-events:none}
 .hero-inner{max-width:100%;margin:0 auto;position:relative;display:flex;align-items:center;gap:14px}
@@ -49,9 +57,9 @@ a:hover{text-decoration-color:currentColor}
 .hero-text h1{font-family:var(--fn);font-size:clamp(1rem,2.5vw,1.2rem);font-weight:600;line-height:1.2;margin-bottom:2px}
 .hero-text p{font-size:clamp(.75rem,2vw,.82rem);color:rgba(255,255,255,.88);line-height:1.4}
 
-/* PÁGINA — mismo padding lateral que hero-wrap para alinear */
-.page{max-width:var(--max);margin:0 auto;padding:0 20px 60px;display:flex;flex-direction:column;gap:24px}
-@media(max-width:600px){.page{padding:0 12px 40px;gap:18px}}
+/* PÁGINA */
+.page{padding-top:0;padding-bottom:60px;display:flex;flex-direction:column;gap:24px}
+@media(max-width:600px){.page{padding-bottom:40px;gap:18px}}
 
 /* BLOQUE */
 .bloque{background:var(--blanco);border-radius:0 0 14px 14px;border:1px solid var(--gris-b);border-top:none;overflow:hidden;box-shadow:var(--sh-s);opacity:0;animation:fadeUp .4s var(--ease) forwards}
