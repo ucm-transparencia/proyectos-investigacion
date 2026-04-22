@@ -14,6 +14,7 @@
   --ucm:#9d2235;--ucm-d:#7a1a28;--ucm-l:#f5e6ea;--ucm-ll:#fdf4f6;
   --gris:#1c1c2e;--gris-m:#4a5568;--gris-c:#f0f3f7;--gris-b:#e4e9f0;
   --blanco:#fff;--verde:#166534;--verde-l:#dcfce7;
+  --azul:#1e40af;--azul-l:#dbeafe;--azul-ll:#eff6ff;
   --fn:'DM Sans',system-ui,sans-serif;--fd:'DM Serif Display',Georgia,serif;
   --dur:.3s;--ease:cubic-bezier(.4,0,.2,1);
   --sh-s:0 1px 4px rgba(0,0,0,.06);--sh-m:0 4px 20px rgba(0,0,0,.09);
@@ -27,43 +28,18 @@ body{font-family:var(--fn);background:var(--gris-c);color:var(--gris);line-heigh
 a{color:inherit;text-decoration:underline;text-decoration-color:transparent;text-underline-offset:2px;transition:text-decoration-color var(--dur)}
 a:hover{text-decoration-color:currentColor}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
-
-/* WRAPPER COMÚN — centra todo el contenido con el mismo ancho y margen */
-.hero-wrap,
-.page{
-  max-width:calc(var(--max) + 40px);
-  margin:0 auto;
-  padding-left:20px;
-  padding-right:20px;
-}
+.hero-wrap,.page{max-width:calc(var(--max) + 40px);margin:0 auto;padding-left:20px;padding-right:20px}
 .hero-wrap{background:var(--gris-c);padding-top:20px;padding-bottom:0}
-@media(max-width:600px){
-  .hero-wrap{padding:14px 12px 0}
-  .page{padding-left:12px;padding-right:12px}
-}
-
-/* HERO — sin border-radius abajo para que fluya con el contenido */
-.hero{
-  background:linear-gradient(135deg,#9d2235 0%,#b82a40 100%);
-  color:#fff;
-  padding:18px 24px;
-  position:relative;
-  overflow:hidden;
-  border-radius:12px 12px 0 0;
-}
+@media(max-width:600px){.hero-wrap{padding:14px 12px 0}.page{padding-left:12px;padding-right:12px}}
+.hero{background:linear-gradient(135deg,#9d2235 0%,#b82a40 100%);color:#fff;padding:18px 24px;position:relative;overflow:hidden;border-radius:12px 12px 0 0}
 .hero::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");pointer-events:none}
 .hero-inner{max-width:100%;margin:0 auto;position:relative;display:flex;align-items:center;gap:14px}
 .hero-icon{width:42px;height:42px;background:rgba(255,255,255,.15);border-radius:10px;border:1px solid rgba(255,255,255,.25);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
 .hero-text h1{font-family:var(--fn);font-size:clamp(1rem,2.5vw,1.2rem);font-weight:600;line-height:1.2;margin-bottom:2px}
 .hero-text p{font-size:clamp(.75rem,2vw,.82rem);color:rgba(255,255,255,.88);line-height:1.4}
-
-/* PÁGINA */
 .page{padding-top:0;padding-bottom:60px;display:flex;flex-direction:column;gap:24px}
 @media(max-width:600px){.page{padding-bottom:40px;gap:18px}}
-
-/* BLOQUE */
 .bloque{background:var(--blanco);border-radius:0 0 14px 14px;border:1px solid var(--gris-b);border-top:none;overflow:hidden;box-shadow:var(--sh-s);opacity:0;animation:fadeUp .4s var(--ease) forwards}
-/* Solo el primer bloque (el que va pegado al hero) tiene este tratamiento especial */
 .bloque:not(:first-child){border-radius:14px;border-top:1px solid var(--gris-b);margin-top:0}
 .bloque:nth-child(1){animation-delay:.05s}
 .bloque:nth-child(2){animation-delay:.12s;border-radius:14px;border-top:1px solid var(--gris-b)}
@@ -73,8 +49,6 @@ a:hover{text-decoration-color:currentColor}
 .bloque-hdr-icon{width:30px;height:30px;background:var(--ucm-l);color:var(--ucm);border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0}
 .bloque-hdr h2{font-family:var(--fd);font-size:clamp(.9rem,2.5vw,1.05rem);font-weight:600;color:var(--gris);flex:1}
 .bloque-body{padding:18px 20px 22px}
-
-/* PESTAÑAS DEL AÑO */
 .year-tabs{display:flex;gap:8px;margin-bottom:18px;flex-wrap:wrap}
 .year-tab{display:inline-flex;align-items:center;gap:6px;padding:8px 18px;border-radius:8px;font-size:.8rem;font-weight:700;font-family:var(--fn);cursor:pointer;transition:all var(--dur) var(--ease);border:2px solid var(--gris-b);background:var(--gris-c);color:var(--gris-m);min-height:40px;letter-spacing:.02em}
 .year-tab:hover{border-color:var(--ucm);color:var(--ucm);background:var(--ucm-ll)}
@@ -82,24 +56,33 @@ a:hover{text-decoration-color:currentColor}
 .year-tab:focus-visible{outline:3px solid var(--ucm);outline-offset:2px}
 .year-panel{display:none}
 .year-panel.active{display:block}
-
-/* TABLA */
+.badge-new{display:inline-flex;align-items:center;font-size:.6rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;background:var(--ucm);color:#fff;padding:2px 6px;border-radius:4px;vertical-align:middle;margin-left:6px;line-height:1.4}
+.year-tab.active .badge-new{background:rgba(255,255,255,.3)}
+.fin-legend{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px;font-size:.72rem}
+.fin-pub{display:inline-flex;align-items:center;gap:4px;font-size:.65rem;font-weight:700;background:var(--azul-l);color:var(--azul);padding:2px 7px;border-radius:4px;white-space:nowrap}
+.fin-priv{display:inline-flex;align-items:center;gap:4px;font-size:.65rem;font-weight:700;background:#fef9c3;color:#713f12;padding:2px 7px;border-radius:4px;white-space:nowrap}
 .table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
 .proy-table{width:100%;border-collapse:collapse;font-size:.82rem;border-radius:10px;overflow:hidden;border:1px solid var(--gris-b)}
 .proy-table thead th{background:var(--ucm);color:#fff;padding:10px 14px;text-align:left;font-size:.75rem;font-weight:600;letter-spacing:.03em}
 .proy-table thead th.num{text-align:right}
+.proy-table thead th.pub{background:#1e40af}
+.proy-table thead th.priv{background:#92400e}
 .proy-table tbody tr{border-bottom:1px solid var(--gris-b);transition:background var(--dur)}
 .proy-table tbody tr:last-child{border-bottom:none}
 .proy-table tbody tr:hover{background:var(--ucm-ll)}
-.proy-table tbody td{padding:10px 14px;vertical-align:middle}
+.proy-table tbody td{padding:10px 14px;vertical-align:middle;color:var(--gris)}
 .proy-table tbody td.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
-.proy-table .total-row td{background:var(--ucm-ll);border-top:2px solid var(--ucm-l);font-weight:700}
+.proy-table tbody td.pub{background:var(--azul-ll)}
+.proy-table tbody td.priv{background:#fffbeb}
+.proy-table .total-row td{background:var(--ucm-ll);border-top:2px solid var(--ucm-l);font-weight:700;color:var(--gris)}
+.proy-table .total-grand{background:var(--ucm) !important}
+.proy-table .total-grand td{background:var(--ucm) !important;border-top:2px solid var(--ucm-d);font-weight:700;color:#fff !important}
+.proy-table .subtotal-row td{background:var(--gris-c);font-weight:600;font-size:.78rem;border-top:1px solid var(--gris-b);color:var(--gris)}
 .proy-table .section-row td{background:var(--gris-c);font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--gris-m);padding:6px 14px}
 .proy-table .indent{padding-left:24px}
 .fn-ref{font-size:.65rem;color:var(--ucm);vertical-align:super}
 .table-notes{font-size:.72rem;color:var(--gris-m);margin-top:10px;line-height:1.6;padding:9px 12px;background:var(--gris-c);border-radius:7px}
-
-/* GRÁFICOS */
+.source-note{font-size:.7rem;color:var(--gris-m);margin-top:8px;padding:8px 12px;background:#fffbeb;border-left:3px solid #f59e0b;border-radius:0 7px 7px 0;line-height:1.5}
 .charts-wrap{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:22px}
 @media(max-width:540px){.charts-wrap{grid-template-columns:1fr}}
 .chart-block{background:var(--gris-c);border:1px solid var(--gris-b);border-radius:12px;padding:18px 18px 14px;position:relative;overflow:hidden}
@@ -117,8 +100,6 @@ a:hover{text-decoration-color:currentColor}
 .bar-fill:hover::after{opacity:1}
 .bar-label{font-size:.68rem;font-weight:700;color:var(--gris-m);text-align:center;padding:5px 0 0;white-space:nowrap}
 .bar-val-top{font-size:.62rem;font-weight:700;text-align:center;margin-bottom:4px;color:var(--gris);white-space:nowrap}
-
-/* BOTONES */
 .btn{display:inline-flex;align-items:center;gap:6px;padding:8px 16px;border-radius:7px;font-size:.74rem;font-weight:700;font-family:var(--fn);text-transform:uppercase;letter-spacing:.04em;cursor:pointer;transition:all var(--dur) var(--ease);border:none;white-space:nowrap;text-decoration:none;min-height:38px}
 .btn:focus-visible{outline:3px solid var(--ucm);outline-offset:2px}
 .btn-rojo{background:var(--ucm);color:#fff}
@@ -129,8 +110,6 @@ a:hover{text-decoration-color:currentColor}
 .btn-dl:hover{background:#14532d;transform:translateY(-1px);box-shadow:0 3px 10px rgba(22,101,52,.3)}
 .btn-dl:focus-visible{outline-color:var(--verde)}
 .btn-group{display:flex;flex-wrap:wrap;gap:8px}
-
-/* DESCARGAS */
 .dl-section{background:linear-gradient(135deg,var(--verde-l) 0%,#f0fdf4 100%);border:1px solid #bbf7d0;border-radius:12px;padding:16px 18px}
 .dl-title{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--verde);margin-bottom:12px;display:flex;align-items:center;gap:6px}
 .dl-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
@@ -144,17 +123,13 @@ a:hover{text-decoration-color:currentColor}
 .dl-name{font-size:.8rem;font-weight:700;color:var(--gris);line-height:1.2}
 .dl-meta{font-size:.68rem;color:var(--gris-m);margin-top:2px}
 .dl-btn{flex-shrink:0}
-
-/* FOOTER */
 .footer{background:var(--blanco);border-top:1px solid var(--gris-b);padding:18px 24px;font-size:.77rem;color:var(--gris-m);text-align:center;line-height:1.7}
 .footer a{color:var(--ucm-d);text-decoration:underline;text-decoration-color:rgba(157,34,53,.3)}
 .footer a:hover{text-decoration-color:var(--ucm)}
-
 #backTop{position:fixed;bottom:24px;right:24px;background:var(--ucm);color:#fff;border:none;width:44px;height:44px;border-radius:50%;cursor:pointer;font-size:18px;box-shadow:0 4px 16px rgba(157,34,53,.35);display:flex;align-items:center;justify-content:center;transition:all var(--dur) var(--ease);opacity:0;pointer-events:none;z-index:100}
 #backTop.visible{opacity:1;pointer-events:auto}
 #backTop:hover{background:var(--ucm-d);transform:translateY(-2px)}
 #backTop:focus-visible{outline:3px solid var(--ucm);outline-offset:3px}
-
 @keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
 </style>
 </head>
@@ -168,7 +143,7 @@ a:hover{text-decoration-color:currentColor}
       <div class="hero-icon" aria-hidden="true">🧪</div>
       <div class="hero-text">
         <h1>Proyectos de Investigación</h1>
-        <p>Datos anuales por convocatoria, evolución 2020–2024, Convenios OTRI y Contratos Art. 60.</p>
+        <p>Datos anuales por convocatoria, Convenios OTC y Contratos Art. 60.</p>
       </div>
     </div>
   </header>
@@ -176,7 +151,7 @@ a:hover{text-decoration-color:currentColor}
 
 <main class="page" id="main-content">
 
-  <!-- ── DATOS ANUALES ─────────────────────────────────────── -->
+  <!-- DATOS ANUALES -->
   <section class="bloque" aria-labelledby="hdr-anuales">
     <div class="bloque-hdr">
       <div class="bloque-hdr-icon" aria-hidden="true">📋</div>
@@ -185,25 +160,167 @@ a:hover{text-decoration-color:currentColor}
     <div class="bloque-body">
 
       <div class="year-tabs" role="tablist" aria-label="Seleccionar año">
-        <button class="year-tab active" role="tab" aria-selected="true" aria-controls="panel-2024" id="tab-2024" onclick="switchTab('2024')">Datos 2024</button>
+        <button class="year-tab active" role="tab" aria-selected="true" aria-controls="panel-2025" id="tab-2025" onclick="switchTab('2025')">Datos 2025 <span class="badge-new">Nuevo</span></button>
+        <button class="year-tab" role="tab" aria-selected="false" aria-controls="panel-2024" id="tab-2024" onclick="switchTab('2024')">Datos 2024</button>
         <button class="year-tab" role="tab" aria-selected="false" aria-controls="panel-2023" id="tab-2023" onclick="switchTab('2023')">Datos 2023</button>
         <button class="year-tab" role="tab" aria-selected="false" aria-controls="panel-2022" id="tab-2022" onclick="switchTab('2022')">Datos 2022</button>
       </div>
 
+      <!-- 2025 -->
+      <div class="year-panel active" id="panel-2025" role="tabpanel" aria-labelledby="tab-2025">
+
+        <!-- Tabla resumen por convocatoria -->
+        <div class="table-scroll" style="margin-bottom:20px">
+          <table class="proy-table" aria-label="UCM — Proyectos y Ayudas de Investigación por Convocatoria 2025">
+            <thead>
+              <tr>
+                <th scope="col">UCM — Proyectos y Ayudas de Investigación por Convocatoria</th>
+                <th scope="col" class="num">Nº proyectos</th>
+                <th scope="col" class="num">Importe</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Convocatorias Locales</td><td class="num">3</td><td class="num">215.000,00 €</td></tr>
+              <tr><td>Convocatorias públicas de comunidades autónomas <span class="fn-ref">¹</span></td><td class="num">137</td><td class="num">10.675.366,49 €</td></tr>
+              <tr><td>Convocatorias públicas nacionales <span class="fn-ref">²</span></td><td class="num">202</td><td class="num">23.201.408,07 €</td></tr>
+              <tr><td>Proyectos Internacionales <span class="fn-ref">³</span></td><td class="num">18</td><td class="num">10.064.505,11 €</td></tr>
+              <tr><td>Proyectos colaboración privada</td><td class="num">20</td><td class="num">681.380,63 €</td></tr>
+              <tr><td>Plan Propio</td><td class="num">125</td><td class="num">202.591,64 €</td></tr>
+              <tr class="total-grand"><td>TOTAL</td><td class="num">505</td><td class="num">45.040.251,94 €</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Detalle por ámbito y financiación -->
+        <div class="fin-legend">
+          <span class="fin-pub">🔵 Financiación pública</span>
+          <span class="fin-priv">🟡 Financiación privada</span>
+        </div>
+
+        <div class="table-scroll" style="margin-bottom:14px">
+          <table class="proy-table" aria-label="Proyectos de Investigación 2025 por ámbito y tipo de financiación">
+            <thead>
+              <tr>
+                <th scope="col">Ámbito</th>
+                <th scope="col" class="num pub">Nº (Pública)</th>
+                <th scope="col" class="num pub">Importe (Pública)</th>
+                <th scope="col" class="num priv">Nº (Privada)</th>
+                <th scope="col" class="num priv">Importe (Privada)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="section-row"><td colspan="5">Proyectos de Investigación</td></tr>
+              <tr><td class="indent">Local</td><td class="num pub">3</td><td class="num pub">215.000,00 €</td><td class="num priv">—</td><td class="num priv">—</td></tr>
+              <tr><td class="indent">Regional (autonómico) <span class="fn-ref">¹</span></td><td class="num pub">137</td><td class="num pub">10.675.366,49 €</td><td class="num priv">—</td><td class="num priv">—</td></tr>
+              <tr><td class="indent">Nacional <span class="fn-ref">²</span></td><td class="num pub">189</td><td class="num pub">23.072.583,20 €</td><td class="num priv">15</td><td class="num priv">631.204,00 €</td></tr>
+              <tr><td class="indent">Europeo <span class="fn-ref">³</span></td><td class="num pub">14</td><td class="num pub">9.969.933,66 €</td><td class="num priv">—</td><td class="num priv">—</td></tr>
+              <tr><td class="indent">Internacional <span class="fn-ref">³</span></td><td class="num pub">4</td><td class="num pub">94.571,45 €</td><td class="num priv">5</td><td class="num priv">50.176,63 €</td></tr>
+              <tr><td class="indent">Plan Propio UCM</td><td class="num pub">1</td><td class="num pub">42.591,64 €</td><td class="num priv">—</td><td class="num priv">—</td></tr>
+              <tr class="section-row"><td colspan="5">Subvenciones y Acciones Especiales</td></tr>
+              <tr><td class="indent">Movilidad nacional</td><td class="num pub">5</td><td class="num pub">56.549,00 €</td><td class="num priv">—</td><td class="num priv">—</td></tr>
+              <tr><td class="indent">Organización de Congresos (nacional)</td><td class="num pub">8</td><td class="num pub">72.275,87 €</td><td class="num priv">—</td><td class="num priv">—</td></tr>
+              <tr><td class="indent">Acciones Especiales competitivas (Plan Propio UCM) <span class="fn-ref">⁴</span></td><td class="num pub">124</td><td class="num pub">160.000,00 €</td><td class="num priv">—</td><td class="num priv">—</td></tr>
+              <tr class="total-row"><td>TOTAL proyectos y subvenciones</td><td class="num">485</td><td class="num">44.358.871,31 €</td><td class="num">20</td><td class="num">681.380,63 €</td></tr>
+              <tr class="total-grand"><td>TOTAL GENERAL</td><td class="num" colspan="2">505 proyectos y subvenciones</td><td class="num" colspan="2">45.040.251,94 €</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Convenios y Contratos -->
+        <div class="table-scroll" style="margin-bottom:12px">
+          <table class="proy-table" aria-label="Convenios y Contratos Art. 60 — 2025">
+            <thead>
+              <tr><th scope="col">Concepto</th><th scope="col" class="num">Número</th><th scope="col" class="num">Importe</th></tr>
+            </thead>
+            <tbody>
+              <tr class="section-row"><td colspan="3">Convenios Vicerrectorado de Investigación y Transferencia</td></tr>
+              <tr><td class="indent">Convenios</td><td class="num">61</td><td class="num">171.470,00 €</td></tr>
+              <tr class="section-row"><td colspan="3">Contratos Art. 60</td></tr>
+              <tr><td class="indent">Contratos</td><td class="num">900</td><td class="num">9.278.175,45 €</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p class="table-notes">
+          <sup>1</sup> CM, ISCIII, proyectos Talento mod. 1, Doctorados Industriales &nbsp;·&nbsp;
+          <sup>2</sup> Proyectos Ministerio, JC, ISCIII y RyC &nbsp;·&nbsp;
+          <sup>3</sup> Incluye Proyectos Europeos-Internacionales &nbsp;·&nbsp;
+          <sup>4</sup> Fondos propios UCM — Acciones Especiales competitivas
+        </p>
+        <p class="source-note">
+          ⚠️ <strong>Fuente:</strong> Datos facilitados por la <strong>Vicegerencia de Investigación UCM</strong>. Los datos de servicios, unidades y centros gestores son los comunicados por cada unidad a efectos de transparencia.
+        </p>
+      </div>
+
       <!-- 2024 -->
-      <div class="year-panel active" id="panel-2024" role="tabpanel" aria-labelledby="tab-2024">
+      <div class="year-panel" id="panel-2024" role="tabpanel" aria-labelledby="tab-2024">
         <div class="table-scroll">
           <table class="proy-table" aria-label="Proyectos de investigación 2024">
             <thead><tr><th scope="col">Tipo de proyectos</th><th scope="col" class="num">Nº proyectos</th><th scope="col" class="num">Importe</th></tr></thead>
             <tbody>
-              <tr><td>Convocatorias públicas nacionales <span class="fn-ref" aria-label="nota 1">¹</span></td><td class="num">203</td><td class="num">28.292.676,00 €</td></tr>
-              <tr><td>Internacionales <span class="fn-ref" aria-label="nota 2">²</span></td><td class="num">33</td><td class="num">8.153.374,42 €</td></tr>
-              <tr><td>Proyectos de colaboración público-privada <span class="fn-ref" aria-label="nota 3">³</span></td><td class="num">31</td><td class="num">5.054.247,75 €</td></tr>
+              <tr><td>Convocatorias públicas nacionales <span class="fn-ref">¹</span></td><td class="num">203</td><td class="num">28.292.676,00 €</td></tr>
+              <tr><td>Internacionales <span class="fn-ref">²</span></td><td class="num">33</td><td class="num">8.153.374,42 €</td></tr>
+              <tr><td>Proyectos de colaboración público-privada <span class="fn-ref">³</span></td><td class="num">31</td><td class="num">5.054.247,75 €</td></tr>
               <tr class="total-row"><td>TOTAL</td><td class="num">267</td><td class="num">41.500.298,17 €</td></tr>
             </tbody>
           </table>
         </div>
         <p class="table-notes"><sup>1</sup> Plan nacional, CM, ISCIII, proyectos Talento mod. 1, Doctorados Industriales &nbsp;·&nbsp; <sup>2</sup> Proyectos ERC, MSCA-IF &nbsp;·&nbsp; <sup>3</sup> Proyectos de colaboración público-privada</p>
+
+        <!-- Evolución 2020-2024 -->
+        <div style="margin-top:28px;padding-top:22px;border-top:2px solid var(--ucm-l)">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px">
+            <div class="bloque-hdr-icon" aria-hidden="true">📊</div>
+            <span style="font-family:var(--fd);font-size:1rem;font-weight:600;color:var(--gris)">Evolución de proyectos 2020–2024</span>
+          </div>
+          <p class="source-note" style="margin-bottom:18px">
+            ℹ️ La serie de evolución recoge datos hasta el ejercicio 2024. Los datos de 2025 se incorporarán una vez cerrado el ejercicio.
+          </p>
+          <div class="charts-wrap" role="img" aria-label="Gráficos de evolución: número e importe de proyectos de investigación UCM 2020-2024">
+            <div class="chart-block">
+              <p class="chart-title">Número total de proyectos</p>
+              <p class="chart-subtitle">Oficina Europea + OTC + Servicio Investigación</p>
+              <div class="chart-area" id="chart-num" aria-hidden="true"></div>
+            </div>
+            <div class="chart-block">
+              <p class="chart-title">Importe captado total</p>
+              <p class="chart-subtitle">En millones de euros</p>
+              <div class="chart-area" id="chart-imp" aria-hidden="true"></div>
+            </div>
+          </div>
+          <div class="table-scroll">
+            <table class="proy-table" aria-label="Tabla detallada de evolución de proyectos 2020-2024">
+              <thead>
+                <tr>
+                  <th scope="col">Concepto</th>
+                  <th scope="col" class="num">2020</th><th scope="col" class="num">2021</th>
+                  <th scope="col" class="num">2022</th><th scope="col" class="num">2023</th>
+                  <th scope="col" class="num">2024</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="section-row"><td colspan="6">Proyectos de Investigación</td></tr>
+                <tr><td class="indent">Nº proyectos Oficina Europea</td><td class="num">27</td><td class="num">22</td><td class="num">36</td><td class="num">31</td><td class="num">33</td></tr>
+                <tr><td class="indent">Importe Oficina Europea</td><td class="num">7.989.457 €</td><td class="num">7.202.630 €</td><td class="num">8.784.505 €</td><td class="num">8.625.944 €</td><td class="num">8.153.374 €</td></tr>
+                <tr><td class="indent">Nº proyectos OTC</td><td class="num">20</td><td class="num">14</td><td class="num">30</td><td class="num">23</td><td class="num">31</td></tr>
+                <tr><td class="indent">Importe OTC</td><td class="num">1.553.362 €</td><td class="num">1.247.243 €</td><td class="num">3.021.029 €</td><td class="num">3.561.872 €</td><td class="num">5.054.248 €</td></tr>
+                <tr><td class="indent">Nº proyectos Servicio de Investigación</td><td class="num">202</td><td class="num">153</td><td class="num">269</td><td class="num">210</td><td class="num">203</td></tr>
+                <tr><td class="indent">Importe Servicio de Investigación</td><td class="num">14.858.683 €</td><td class="num">17.472.598 €</td><td class="num">30.921.647 €</td><td class="num">31.399.834 €</td><td class="num">28.292.676 €</td></tr>
+                <tr class="total-row"><td>Nº TOTAL</td><td class="num">249</td><td class="num">189</td><td class="num">335</td><td class="num">264</td><td class="num">267</td></tr>
+                <tr class="total-row"><td>TOTAL IMPORTE</td><td class="num">24.401.502 €</td><td class="num">25.922.472 €</td><td class="num">42.727.181 €</td><td class="num">43.587.651 €</td><td class="num">41.500.298 €</td></tr>
+                <tr class="section-row"><td colspan="6">Convenios OTC</td></tr>
+                <tr><td class="indent">Número</td><td class="num">1</td><td class="num">1</td><td class="num">2</td><td class="num">1</td><td class="num">3</td></tr>
+                <tr><td class="indent">Importe</td><td class="num">18.000 €</td><td class="num">18.000 €</td><td class="num">23.000 €</td><td class="num">18.000 €</td><td class="num">951.117 €</td></tr>
+                <tr class="section-row"><td colspan="6">Contratos Art. 60</td></tr>
+                <tr><td class="indent">Número</td><td class="num">518</td><td class="num">588</td><td class="num">654</td><td class="num">776</td><td class="num">750</td></tr>
+                <tr><td class="indent">Importe</td><td class="num">9.614.737 €</td><td class="num">5.901.393 €</td><td class="num">9.157.601 €</td><td class="num">9.738.108 €</td><td class="num">9.535.945 €</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="source-note" style="margin-top:12px">
+            ⚠️ <strong>Fuente:</strong> Datos facilitados por la <strong>Vicegerencia de Investigación UCM</strong>. Los datos de Oficina Europea, OTC y Servicio de Investigación son los comunicados por cada unidad a efectos de transparencia.
+          </p>
+        </div>
       </div>
 
       <!-- 2023 -->
@@ -241,60 +358,7 @@ a:hover{text-decoration-color:currentColor}
     </div>
   </section>
 
-  <!-- ── EVOLUCIÓN ─────────────────────────────────────────── -->
-  <section class="bloque" aria-labelledby="hdr-evol">
-    <div class="bloque-hdr">
-      <div class="bloque-hdr-icon" aria-hidden="true">📊</div>
-      <h2 id="hdr-evol">Evolución de proyectos 2020–2024</h2>
-    </div>
-    <div class="bloque-body">
-
-      <div class="charts-wrap" role="img" aria-label="Gráficos de evolución: número e importe de proyectos de investigación UCM 2020-2024">
-        <div class="chart-block">
-          <p class="chart-title">Número total de proyectos</p>
-          <p class="chart-subtitle">Oficina Europea + OTRI + Servicio Investigación</p>
-          <div class="chart-area" id="chart-num" aria-hidden="true"></div>
-        </div>
-        <div class="chart-block">
-          <p class="chart-title">Importe captado total</p>
-          <p class="chart-subtitle">En millones de euros</p>
-          <div class="chart-area" id="chart-imp" aria-hidden="true"></div>
-        </div>
-      </div>
-
-      <div class="table-scroll">
-        <table class="proy-table" aria-label="Tabla detallada de evolución de proyectos 2020-2024">
-          <thead>
-            <tr>
-              <th scope="col">Concepto</th>
-              <th scope="col" class="num">2020</th><th scope="col" class="num">2021</th>
-              <th scope="col" class="num">2022</th><th scope="col" class="num">2023</th>
-              <th scope="col" class="num">2024</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr class="section-row"><td colspan="6">Proyectos de Investigación</td></tr>
-            <tr><td class="indent">Nº proyectos Oficina Europea</td><td class="num">27</td><td class="num">22</td><td class="num">36</td><td class="num">31</td><td class="num">33</td></tr>
-            <tr><td class="indent">Importe Oficina Europea</td><td class="num">7.989.457 €</td><td class="num">7.202.630 €</td><td class="num">8.784.505 €</td><td class="num">8.625.944 €</td><td class="num">8.153.374 €</td></tr>
-            <tr><td class="indent">Nº proyectos OTRI</td><td class="num">20</td><td class="num">14</td><td class="num">30</td><td class="num">23</td><td class="num">31</td></tr>
-            <tr><td class="indent">Importe OTRI</td><td class="num">1.553.362 €</td><td class="num">1.247.243 €</td><td class="num">3.021.029 €</td><td class="num">3.561.872 €</td><td class="num">5.054.248 €</td></tr>
-            <tr><td class="indent">Nº proyectos Servicio de Investigación</td><td class="num">202</td><td class="num">153</td><td class="num">269</td><td class="num">210</td><td class="num">203</td></tr>
-            <tr><td class="indent">Importe Servicio de Investigación</td><td class="num">14.858.683 €</td><td class="num">17.472.598 €</td><td class="num">30.921.647 €</td><td class="num">31.399.834 €</td><td class="num">28.292.676 €</td></tr>
-            <tr class="total-row"><td>Nº TOTAL</td><td class="num">249</td><td class="num">189</td><td class="num">335</td><td class="num">264</td><td class="num">267</td></tr>
-            <tr class="total-row"><td>TOTAL IMPORTE</td><td class="num">24.401.502 €</td><td class="num">25.922.472 €</td><td class="num">42.727.181 €</td><td class="num">43.587.651 €</td><td class="num">41.500.298 €</td></tr>
-            <tr class="section-row"><td colspan="6">Convenios OTRI</td></tr>
-            <tr><td class="indent">Número</td><td class="num">1</td><td class="num">1</td><td class="num">2</td><td class="num">1</td><td class="num">3</td></tr>
-            <tr><td class="indent">Importe</td><td class="num">18.000 €</td><td class="num">18.000 €</td><td class="num">23.000 €</td><td class="num">18.000 €</td><td class="num">951.117 €</td></tr>
-            <tr class="section-row"><td colspan="6">Contratos Art. 60</td></tr>
-            <tr><td class="indent">Número</td><td class="num">518</td><td class="num">588</td><td class="num">654</td><td class="num">776</td><td class="num">750</td></tr>
-            <tr><td class="indent">Importe</td><td class="num">9.614.737 €</td><td class="num">5.901.393 €</td><td class="num">9.157.601 €</td><td class="num">9.738.108 €</td><td class="num">9.535.945 €</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </section>
-
-  <!-- ── DESCARGA ────────────────────────────────────────────── -->
+  <!-- DESCARGA -->
   <section class="bloque" aria-labelledby="hdr-dl">
     <div class="bloque-hdr">
       <div class="bloque-hdr-icon" aria-hidden="true">⬇️</div>
@@ -310,11 +374,11 @@ a:hover{text-decoration-color:currentColor}
           <div class="dl-card">
             <div class="dl-icon xlsx" aria-hidden="true">📗</div>
             <div class="dl-info">
-              <p class="dl-name">Proyectos de Investigación UCM</p>
-              <p class="dl-meta">Excel (.xlsx) &nbsp;·&nbsp; Evolución 2020–2024 + datos anuales</p>
+              <p class="dl-name">Proyectos de Investigación UCM 2025</p>
+              <p class="dl-meta">Excel (.xlsx) &nbsp;·&nbsp; Datos por convocatoria y ámbito 2025</p>
             </div>
             <div class="dl-btn">
-              <a id="dl-xlsx" href="https://www.ucm.es/portaldetransparencia/file/proyectos-investigacion-ucm" download="proyectos-investigacion-ucm.xlsx" class="btn btn-dl" aria-label="Descargar Excel de proyectos de investigación">
+              <a href="data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;base64,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" download="proyectos-investigacion-ucm-2025.xlsx" class="btn btn-dl" aria-label="Descargar Excel de proyectos de investigación 2025">
                 <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15V3m0 12-4-4m4 4 4-4"/><path d="M2 17v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2"/></svg>
                 .xlsx
               </a>
@@ -323,11 +387,11 @@ a:hover{text-decoration-color:currentColor}
           <div class="dl-card">
             <div class="dl-icon csv" aria-hidden="true">📄</div>
             <div class="dl-info">
-              <p class="dl-name">Proyectos de Investigación UCM</p>
+              <p class="dl-name">Proyectos de Investigación UCM 2025</p>
               <p class="dl-meta">CSV (.csv) &nbsp;·&nbsp; Compatible con cualquier hoja de cálculo</p>
             </div>
             <div class="dl-btn">
-              <a id="dl-csv" href="#" download="proyectos-investigacion-ucm.csv" class="btn btn-dl" aria-label="Descargar CSV de proyectos de investigación">
+              <a href="data:text/csv;charset=utf-8;base64,77u/VUNNIOKAlCBQcm95ZWN0b3MgeSBBeXVkYXMgZGUgSW52ZXN0aWdhY2nDs24gcG9yIENvbnZvY2F0b3JpYSAyMDI1DQpGdWVudGU6IFZpY2VnZXJlbmNpYSBkZSBJbnZlc3RpZ2FjacOzbiBVQ00NCg0KQcOxbyAyMDI1LE7CuiBwcm95ZWN0b3MsSW1wb3J0ZSAo4oKsKQ0KQ29udm9jYXRvcmlhcyBMb2NhbGVzLDMsMjE1MDAwDQpDb252b2NhdG9yaWFzIHDDumJsaWNhcyBkZSBjb211bmlkYWRlcyBhdXTDs25vbWFzICjCuSksMTM3LDEwNjc1MzY2LjQ5DQpDb252b2NhdG9yaWFzIHDDumJsaWNhcyBuYWNpb25hbGVzICjCsiksMjAyLDIzMjAxNDA4LjA3DQpQcm95ZWN0b3MgSW50ZXJuYWNpb25hbGVzICjCsyksMTgsMTAwNjQ1MDUuMTENClByb3llY3RvcyBjb2xhYm9yYWNpw7NuIHByaXZhZGEsMjAsNjgxMzgwLjYzDQpQbGFuIFByb3BpbywxMjUsMjAyNTkxLjY0DQpUT1RBTCw1MDUsNDUwNDAyNTEuOTQNCg0KRGV0YWxsZSBwb3Igw6FtYml0byB5IHRpcG8gZGUgZmluYW5jaWFjacOzbixGaW5hbmNpYWNpw7NuIFDDumJsaWNhIC0gTsK6LEZpbmFuY2lhY2nDs24gUMO6YmxpY2EgLSBJbXBvcnRlICjigqwpLEZpbmFuY2lhY2nDs24gUHJpdmFkYSAtIE7CuixGaW5hbmNpYWNpw7NuIFByaXZhZGEgLSBJbXBvcnRlICjigqwpDQpMb2NhbCwzLDIxNTAwMCwsDQpSZWdpb25hbCwxMzcsMTA2NzUzNjYuNDksLA0KTmFjaW9uYWwsMTg5LDIzMDcyNTgzLjIsMTUsNjMxMjA0DQpFdXJvcGVvLDE0LDk5Njk5MzMuNjYsLA0KSW50ZXJuYWNpb25hbCw0LDk0NTcxLjQ1LDUsNTAxNzYuNjMNClBsYW4gUHJvcGlvIFVDTSwxLDQyNTkxLjY0LCwNCg0KU3VidmVuY2lvbmVzLE7CuixJbXBvcnRlICjigqwpLCwNCk1vdmlsaWRhZCBuYWNpb25hbCw1LDU2NTQ5LCwNCk9yZ2FuaXphY2nDs24gZGUgQ29uZ3Jlc29zIG5hY2lvbmFsLDgsNzIyNzUuODcsLA0KQWNjaW9uZXMgRXNwZWNpYWxlcyBjb21wZXRpdGl2YXMgKFBsYW4gUHJvcGlvIFVDTSksMTI0LDE2MDAwMCwsDQoNClRPVEFMIHByb3llY3RvcyB5IHN1YnZlbmNpb25lcyw0ODUsNDQzNTg4NzEuMzEsMjAsNjgxMzgwLjYzDQpUT1RBTCBHRU5FUkFMLDUwNSw0NTA0MDI1MS45NCwsDQoNCkNPTlZFTklPUyBWaWNlcnJlY3RvcmFkbyBkZSBJbnZlc3RpZ2FjacOzbiB5IFRyYW5zZmVyZW5jaWEsTsO6bWVybyxJbXBvcnRlICjigqwpLCwNCkNvbnZlbmlvcyw2MSwxNzE0NzAsLA0KDQpDb250cmF0b3MgQXJ0LiA2MCxOw7ptZXJvLEltcG9ydGUgKOKCrCksLA0KQ29udHJhdG9zLDkwMCw5Mjc4MTc1LjQ1LCwNCg0KTm90YXM6LCwsLA0KIsK5IENNLCBJU0NJSUksIHByb3llY3RvcyBUYWxlbnRvIG1vZC4gMSwgRG9jdG9yYWRvcyBJbmR1c3RyaWFsZXMiLCwsLA0KIsKyIFByb3llY3RvcyBNaW5pc3RlcmlvLCBKQywgSVNDSUlJIHkgUnlDIiwsLCwNCsKzIEluY2x1eWUgUHJveWVjdG9zIEV1cm9wZW9zLUludGVybmFjaW9uYWxlcywsLCwNCg==" download="proyectos-investigacion-ucm-2025.csv" class="btn btn-dl" aria-label="Descargar CSV de proyectos de investigación 2025">
                 <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15V3m0 12-4-4m4 4 4-4"/><path d="M2 17v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2"/></svg>
                 .csv
               </a>
@@ -338,7 +402,7 @@ a:hover{text-decoration-color:currentColor}
     </div>
   </section>
 
-  <!-- ── ACCESOS ──────────────────────────────────────────────── -->
+  <!-- ACCESOS -->
   <section class="bloque" aria-labelledby="hdr-accesos">
     <div class="bloque-hdr">
       <div class="bloque-hdr-icon" aria-hidden="true">🔗</div>
@@ -357,13 +421,12 @@ a:hover{text-decoration-color:currentColor}
 </main>
 
 <footer class="footer">
-  <p>Datos facilitados y extraídos del <a href="https://www.ucm.es/investigar" target="_blank" rel="noopener noreferrer">Servicio de Investigación ↗<span class="sr-only"> (nueva pestaña)</span></a></p>
+  <p>Datos facilitados y extraídos del <a href="https://www.ucm.es/investigar" target="_blank" rel="noopener noreferrer">Servicio de Investigación ↗<span class="sr-only"> (nueva pestaña)</span></a> y de la <strong>Vicegerencia de Investigación UCM</strong>.</p>
 </footer>
 
 <button id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Volver al inicio de la página">↑</button>
 
 <script>
-/* ── Pestañas ── */
 function switchTab(year) {
   document.querySelectorAll('.year-tab').forEach(t => {
     const active = t.id === 'tab-' + year;
@@ -374,75 +437,48 @@ function switchTab(year) {
     p.classList.toggle('active', p.id === 'panel-' + year);
   });
 }
-
-/* ── Volver arriba ── */
 const bt = document.getElementById('backTop');
 window.addEventListener('scroll', () => bt.classList.toggle('visible', scrollY > 300), {passive:true});
 
-/* ── Gráficos ── */
+/* ── Gráficos evolución (solo dentro del panel 2024) ── */
 (function(){
-  const years = [2020, 2021, 2022, 2023, 2024];
-  const numData = [249, 189, 335, 264, 267];
-  const impData = [24.4, 25.9, 42.7, 43.6, 41.5];
-  const numTips = ['249 proyectos', '189 proyectos', '335 proyectos', '264 proyectos', '267 proyectos'];
-  const impTips = ['24,4 M€', '25,9 M€', '42,7 M€', '43,6 M€', '41,5 M€'];
-
-  function buildChart(id, data, tips, colorVar, fmtVal) {
-    const el = document.getElementById(id);
-    if (!el) return;
-    const max = Math.max(...data);
-
-    const gridDiv = document.createElement('div');
-    gridDiv.className = 'chart-grid';
-    gridDiv.setAttribute('aria-hidden','true');
-    for (let i = 0; i < 4; i++) {
-      const line = document.createElement('div');
-      line.className = 'chart-grid-line';
-      gridDiv.appendChild(line);
+  let built = false;
+  function buildCharts() {
+    if (built) return;
+    built = true;
+    const years = [2020,2021,2022,2023,2024];
+    const numData = [249,189,335,264,267];
+    const impData = [24.4,25.9,42.7,43.6,41.5];
+    const numTips = ['249 proyectos','189 proyectos','335 proyectos','264 proyectos','267 proyectos'];
+    const impTips = ['24,4 M€','25,9 M€','42,7 M€','43,6 M€','41,5 M€'];
+    function buildChart(id, data, tips, colorVar, fmtVal) {
+      const el = document.getElementById(id);
+      if (!el || el.children.length) return;
+      const max = Math.max(...data);
+      const g = document.createElement('div'); g.className='chart-grid'; g.setAttribute('aria-hidden','true');
+      for (let i=0;i<4;i++){const l=document.createElement('div');l.className='chart-grid-line';g.appendChild(l);}
+      el.appendChild(g);
+      years.forEach((y,i)=>{
+        const pct=(data[i]/max*100).toFixed(1);
+        const grp=document.createElement('div');grp.className='bar-group';
+        const vt=document.createElement('div');vt.className='bar-val-top';vt.textContent=fmtVal(data[i]);
+        const sp=document.createElement('div');sp.className='bar-spacer';
+        const bar=document.createElement('div');bar.className='bar-fill';
+        bar.style.height=pct+'%';bar.style.background=colorVar;
+        bar.setAttribute('data-tip',tips[i]);bar.setAttribute('role','img');bar.setAttribute('aria-label',y+': '+tips[i]);
+        const lbl=document.createElement('div');lbl.className='bar-label';lbl.textContent=y;
+        sp.appendChild(bar);grp.appendChild(vt);grp.appendChild(sp);grp.appendChild(lbl);el.appendChild(grp);
+      });
     }
-    el.appendChild(gridDiv);
-
-    years.forEach((y, i) => {
-      const pct = (data[i] / max * 100).toFixed(1);
-      const group = document.createElement('div');
-      group.className = 'bar-group';
-
-      const valTop = document.createElement('div');
-      valTop.className = 'bar-val-top';
-      valTop.textContent = fmtVal(data[i]);
-
-      const spacer = document.createElement('div');
-      spacer.className = 'bar-spacer';
-
-      const bar = document.createElement('div');
-      bar.className = 'bar-fill';
-      bar.style.height = pct + '%';
-      bar.style.background = colorVar;
-      bar.setAttribute('data-tip', tips[i]);
-      bar.setAttribute('role', 'img');
-      bar.setAttribute('aria-label', y + ': ' + tips[i]);
-
-      const lbl = document.createElement('div');
-      lbl.className = 'bar-label';
-      lbl.textContent = y;
-
-      spacer.appendChild(bar);
-      group.appendChild(valTop);
-      group.appendChild(spacer);
-      group.appendChild(lbl);
-      el.appendChild(group);
-    });
+    buildChart('chart-num', numData, numTips, 'var(--ucm)', n=>n);
+    buildChart('chart-imp', impData, impTips, 'var(--verde)', n=>n.toFixed(1).replace('.',',')+' M');
   }
-
-  function init() {
-    buildChart('chart-num', numData, numTips, 'var(--ucm)', n => n);
-    buildChart('chart-imp', impData, impTips, 'var(--verde)', n => n.toFixed(1).replace('.',',') + ' M');
-  }
-
-  document.readyState === 'loading'
-    ? document.addEventListener('DOMContentLoaded', init)
-    : init();
+  // Build immediately if 2024 is the default active tab, otherwise on first click
+  const orig = window.switchTab;
+  window.switchTab = function(year) { orig(year); if (year==='2024') buildCharts(); };
+  if (document.getElementById('panel-2024').classList.contains('active')) buildCharts();
 })();
+
 </script>
 </body>
 </html>
